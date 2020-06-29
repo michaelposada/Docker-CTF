@@ -1,0 +1,19 @@
+version: '3'  ##format for docker compose
+networks:
+    dockernet:
+        driver: bridge 
+        driver_opts: 
+            com.docker.network.enable_ipv6: "false"
+        ipam:
+          config:
+            - subnet: 172.25.0.0/16
+
+services:
+    test-ubuntu:
+        build: .
+        ports:
+            - 22:22
+        networks:
+                dockernet:
+                        ipv4_address: 172.25.0.2
+
