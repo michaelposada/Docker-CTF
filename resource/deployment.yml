@@ -1,0 +1,36 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ctf-deployment
+  labels:
+    app: ctf-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ctf-deployment
+  template:
+    metadata:
+      labels:
+        app: ctf-deployment
+    spec:
+      containers:
+      - name: ctf-beta
+        image: michaelposada/ctf_beta:ubuntu_beta
+        #command: [ "/bin/bash", "-c", "--" ]
+        #args: [ "while true; do sleep 30; done;" ]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ctf-ssh-svc
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 22
+      targetPort: 22
+      protocol: TCP
+      name: ssh
+  selector:
+    app: ctf-deployment
