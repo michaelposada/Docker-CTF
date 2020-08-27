@@ -1,0 +1,22 @@
+CREATE TYPE editType AS ENUM('addition', 'removal');
+
+CREATE TABLE users(
+	user_id serial PRIMARY KEY,
+	username VARCHAR(50) UNIQUE NOT NULL,
+	password VARCHAR(50) NOT NULL)
+
+CREATE TABLE projects(
+	project_id serial PRIMARY KEY,
+	name VARCHAR(50) NOT NULL,
+	owner integer REFERENCES users(user_id) NOT NULL,
+	);
+
+CREATE TABLE files(
+	file_id serial PRIMARY KEY,
+	categories TEXT,
+	project integer REFERENCES projects(project_id) NOT NULL,
+	);
+
+CREATE ROLE "www-data" LOGIN;
+
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO "www-data";

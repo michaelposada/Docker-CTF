@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+    name: testuser102.group100-rolebinding
+    namespace: testuser102.group100
+roleRef:
+  kind: Role
+  name: testuser102.group100-role
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: User
+  name: testuser102.group100
+  apiGroup:

@@ -9,19 +9,19 @@ EXPIRE="2028-07-15"
 
 if [ "$(/usr/bin/whoami)" != "root" ] ;
 then
-        echo "Must be Root!"
+        echo "$(tput setaf 1) Must be Root! $(tput setaf 1) "
         exit 1
 fi
 
 if [ $# != 1 ]
 then
-        echo "Must provide single CSV, with usernames in Column 1, and groups in Column2"
+	echo "$(tput setaf 1) Must provide single CSV, with usernames in Column 1, and groups in Column2 $(tput setaf 1) "
         exit 1
 fi
 
 if [ ! -f $1 ]
 then
-        echo "$1 is not a file or it cannot be read"
+        echo "$(tput setaf 1)  $1 is not a file or it cannot be read $(tput setaf 1) "
         exit 1
 fi
 
@@ -52,11 +52,11 @@ do
         then
                 if [ "$group" != "" ];
                 then
-                        echo "Skipping $u (Already Exists). Updated Expiration, Added Group $group"
+                        echo "$(tput setaf 3)  Skipping $u (Already Exists). Updated Expiration, Added Group $group $(tput setaf 3) "
                         /usr/bin/chage -E ${EXPIRE} $u
                         usermod -a -G $group $u
                 else
-                        echo "$u Already Exists, and has no Group. Updating Expiration"
+                        echo " $(tput setaf 3) $u Already Exists, and has no Group. Updating Expiration $(tput setaf 3) "
                         /usr/bin/chage -E ${EXPIRE} $u
                 fi
         else
@@ -67,10 +67,10 @@ do
 
                 if [ "$group" != "" ];
                 then
-                        echo "New User: $u with password $pw, group $group" | tee -a created/newHistory.txt
+                        echo "$(tput setaf 6) New User: $u with password $pw, group $group $(tput setaf 6) " | tee -a created/newHistory.txt
                         usermod -a -G $group $u
                 else
-                        echo "New User: $u with password $pw, But no Group!" | tee -a created/newHistory.txt
+                        echo "$(tput setaf 6)  New User: $u with password $pw, But no Group! $(tput setaf 7) " | tee -a created/newHistory.txt
                 fi
                 echo ""
         fi

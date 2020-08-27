@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+</head>
+<body>
+<body style="background-color:tomato;">
+<img src="../Sources/icon.png" alt="Arena Co." class="center">
+
+<p style="font-size: 70px;font-family:'Comic Sans MS'">Login</p>
+
+<form style="padding: 10px; margin: 10px" action="../Scripts/login.php" method="post">
+
+<div class="container">
+    <label for="user"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
+
+    <label for="pass"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+
+    <button type="submit">Login</button>
+</form>
+<br>
+
+
+<form action="../View/RegisterAccount.html">
+    <input type="submit" value="Don't have an account?" />
+</form>
+
+<form action="../View/ForgotPassword.html">
+    <input type="submit" value="Forgot Password?" />
+</form>
+
+  </div>
+
+</body>
+</html>

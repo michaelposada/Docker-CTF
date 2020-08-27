@@ -1,0 +1,5 @@
+
+group100 IP Address: 192.168.43.2
+group100 and echo Aa4ch are the username and password for that team. They need it for the webserver that is running on 192.168.42.11
+group200 IP Address: 192.168.43.11
+group200 and echo oo3Ch are the username and password for that team. They need it for the webserver that is running on 192.168.42.11

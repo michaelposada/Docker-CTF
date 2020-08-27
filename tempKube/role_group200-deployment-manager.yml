@@ -1,0 +1,9 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+    namespace: group200
+    name: group200-role
+rules:
+- apiGroups: ['*']
+  resources: ['*']
+  verbs: ['*']

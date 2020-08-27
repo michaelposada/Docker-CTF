@@ -1,25 +1,23 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ctf-deployment
+  name: ctf-v1-deployment
   labels:
-    app: ctf-deployment
+    app: ctf-v1-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ctf-deployment
+      app: ctf-v1-deployment
   template:
     metadata:
       labels:
-        app: ctf-deployment
+        app: ctf-v1-deployment
     spec:
       containers:
       - name: ctf-beta
-        image: michaelposada/ctf_beta:ubuntu_beta
-        #command: [ "/bin/bash", "-c", "--" ]
-        #args: [ "while true; do sleep 30; done;" ]
+        image: michaelposada/ctf_demo:ctfBeta
+        ports:
 ---
 apiVersion: v1
 kind: Service
@@ -33,4 +31,4 @@ spec:
       protocol: TCP
       name: ssh
   selector:
-    app: ctf-deployment
+    app: ctf-v1-deployment
